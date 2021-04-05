@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app3/services/auth.dart';
 import 'package:flutter_app3/shared/constants.dart';
 import 'package:flutter_app3/shared/loading.dart';
+import 'package:flutter_app3/styleguide/colors.dart';
 //import 'package:flutter_app3/screens/authenticate/sign_in_doctor.dart';
 
 class SignIn extends StatefulWidget {
@@ -30,12 +31,18 @@ class _SignInState extends State<SignIn> {
             appBar: AppBar(
               backgroundColor: Colors.brown[400],
               elevation: 0.0,
-              title: Text('Sign in User'),
+              title: Text('Sign in'),
               actions: <Widget>[
-               
                 ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(brown), //Background Color
+                    elevation: MaterialStateProperty.all(0), //Defines Elevation
+                    shadowColor:
+                        MaterialStateProperty.all(brown), //Defines shadowColor
+                  ),
                   icon: Icon(Icons.person),
-                  label: Text('Register as User'),
+                  label: Text('Register'),
                   onPressed: () => widget.toggleView(),
                 ),
               ],
@@ -78,9 +85,17 @@ class _SignInState extends State<SignIn> {
                           setState(() => SignIn.userv = value),
                     ),
                     SizedBox(height: 12.0),
-                  
-                   ElevatedButton(
+
+                    ElevatedButton(
                       // color: Colors.pink[400],
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(pink), //Background Color
+                        elevation:
+                            MaterialStateProperty.all(3), //Defines Elevation
+                        shadowColor: MaterialStateProperty.all(
+                            pink), //Defines shadowColor
+                      ),
                       child: Text(
                         'Sign in',
                         style: TextStyle(color: Colors.white),

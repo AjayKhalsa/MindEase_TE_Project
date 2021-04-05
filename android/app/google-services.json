@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "15924082572",
-    "project_id": "amittry-2cb1c",
-    "storage_bucket": "amittry-2cb1c.appspot.com"
+    "project_number": "730961106072",
+    "project_id": "final-94147",
+    "storage_bucket": "final-94147.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15924082572:android:aa21c6febc178cf33788a9",
+        "mobilesdk_app_id": "1:730961106072:android:9f3b2d76f56975993a6ced",
         "android_client_info": {
-          "package_name": "com.amit.flutter_app3"
+          "package_name": "com.amit.flutter_app31"
         }
       },
       "oauth_client": [
         {
-          "client_id": "15924082572-j60ahkr468o7qra0ru8mt8m5acd2peap.apps.googleusercontent.com",
+          "client_id": "730961106072-v3tl98vkbgsbt32jppv6jt2bo6agd17q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDwCx_kSMusoAxanz2yDhGH7NBjIvpXTRM"
+          "current_key": "AIzaSyA1eLQGdwCgtFJNR2OafqLNbMVRTsl2BLE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "15924082572-j60ahkr468o7qra0ru8mt8m5acd2peap.apps.googleusercontent.com",
+              "client_id": "730961106072-v3tl98vkbgsbt32jppv6jt2bo6agd17q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

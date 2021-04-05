@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app3/services/auth.dart';
 import 'package:flutter_app3/shared/constants.dart';
 import 'package:flutter_app3/shared/loading.dart';
+import 'package:flutter_app3/styleguide/colors.dart';
 //import 'package:flutter_app3/screens/authenticate/register_doctor.dart';
 
 class Register extends StatefulWidget {
@@ -32,8 +33,14 @@ class _RegisterState extends State<Register> {
               elevation: 0.0,
               title: Text('Sign up'),
               actions: <Widget>[
-           
                 ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(brown), //Background Color
+                    elevation: MaterialStateProperty.all(0), //Defines Elevation
+                    shadowColor:
+                        MaterialStateProperty.all(brown), //Defines shadowColor
+                  ),
                   icon: Icon(Icons.person),
                   label: Text('SignIn'),
                   onPressed: () => widget.toggleView(),
@@ -77,9 +84,15 @@ class _RegisterState extends State<Register> {
                           setState(() => Register.userv = value),
                     ),
                     SizedBox(height: 20.0),
-                    
                     ElevatedButton(
-                      // color: Colors.pink[400],
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(pink), //Background Color
+                        elevation:
+                            MaterialStateProperty.all(3), //Defines Elevation
+                        shadowColor: MaterialStateProperty.all(
+                            pink), //Defines shadowColor
+                      ),
                       child: Text(
                         'Register as User',
                         style: TextStyle(color: Colors.white),
@@ -98,7 +111,6 @@ class _RegisterState extends State<Register> {
                         }
                       },
                     ),
-                    
                     SizedBox(height: 12.0),
                     Text(
                       error,

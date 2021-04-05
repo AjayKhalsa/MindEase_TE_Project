@@ -7,7 +7,7 @@ import 'package:flutter_app3/shared/profile_info_big_cart.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app3/shared/profile_info_card.dart';
 import 'package:flutter_app3/models/brew.dart';
-
+import 'package:flutter_app3/styleguide/colors.dart';
 import 'package:flutter_app3/services/auth.dart';
 import 'package:flutter_app3/services/database.dart';
 import 'package:flutter_app3/screens/home/settings_form.dart';
@@ -42,7 +42,14 @@ class UserScreen extends StatelessWidget {
           elevation: 0.0,
           actions: <Widget>[
          
-            ElevatedButton.icon(
+             ElevatedButton.icon(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(brown), //Background Color
+                elevation: MaterialStateProperty.all(0), //Defines Elevation
+                shadowColor:
+                    MaterialStateProperty.all(brown), //Defines shadowColor
+              ),
               icon: Icon(Icons.person),
               label: Text('logout'),
               onPressed: () async {
