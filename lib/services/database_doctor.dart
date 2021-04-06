@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app3/models/brew.dart';
 import 'package:flutter_app3/models/user.dart';
+import 'package:flutter_app3/globals.dart' as globals;
 
 class DoctorDatabaseService {
   final String uid;
@@ -14,6 +15,7 @@ class DoctorDatabaseService {
       'address': address,
       'name': name,
       'phone': phone,
+      'uid': globals.uid,
     });
   }
 

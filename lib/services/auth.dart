@@ -4,13 +4,17 @@ import 'package:flutter_app3/services/database.dart';
 //import 'package:flutter_app3/services/database_doctor.dart';
 import 'package:flutter_app3/screens/authenticate/register.dart';
 import 'package:flutter_app3/services/database_doctor.dart';
+import 'package:flutter_app3/globals.dart' as globals;
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //user obj
   User _userFromFirebaseUser(FirebaseUser user) {
-    // ignore: unnecessary_null_comparison
+    if (user != null) {
+      globals.uid = user.uid;
+      print(globals.uid);
+    }
     return user != null ? User(uid: user.uid) : null;
   }
 

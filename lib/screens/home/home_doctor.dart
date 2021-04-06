@@ -12,7 +12,7 @@ import 'package:flutter_app3/services/auth.dart';
 import 'package:flutter_app3/services/database_doctor.dart';
 import 'package:flutter_app3/screens/home/settings_form_doctor.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:flutter_app3/video_call/HomePage.dart';
 import 'package:flutter_app3/screens/home/home.dart';
 
 class DoctorScreen extends StatelessWidget {
@@ -100,14 +100,23 @@ class DoctorScreen extends StatelessWidget {
                       children: [
                         TableRow(
                           children: [
-                            ProfileInfoBigCard(
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => MyHomePage(),
+                                  ),
+                                );
+                              },
+                            child: ProfileInfoBigCard(
                               firstText: "13",
-                              secondText: "new icon",
+                              secondText: "Video call",
                               icon: Icon(
                                 Icons.star,
                                 size: 32,
                                 color: Colors.blue,
                               ),
+                            ),
                             ),
                             ProfileInfoBigCard(
                               firstText: "21",
@@ -118,6 +127,7 @@ class DoctorScreen extends StatelessWidget {
                                 color: Colors.blue,
                               ),
                             ),
+                            
                           ],
                         ),
                         TableRow(
