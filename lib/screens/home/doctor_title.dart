@@ -20,18 +20,18 @@ class DoctorTile extends StatelessWidget {
               backgroundColor: Colors.brown[doctor.phone],
             ),
             title: Text(doctor.name),
-            subtitle: Text('Takes ${doctor.address} sugar(s)'),
+            subtitle: Text('Timing ${doctor.address}'),
           ),
           ButtonBar(
               children: <Widget>[
                
            ElevatedButton(
-                  child: const Text('BTN1'),
+                  child: const Text('Request For Appointment'),
                   onPressed: () {/* ... */},
                 ),
                 
                 ElevatedButton(
-                  child: const Text('BTN2'),
+                  child: const Text('Cancel the Appointment'),
                   onPressed: () {/* ... */},
                 ),
               ],

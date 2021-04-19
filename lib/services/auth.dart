@@ -62,7 +62,7 @@ class AuthService {
             .updateUserData('0', 'doctor', 100);
       } else {
         await DatabaseService(uid: user.uid)
-            .updateUserData('0', 'new crew member', 100);
+            .updateUserData('0', 'User', 100);
       }
 
       return _userFromFirebaseUser(user);

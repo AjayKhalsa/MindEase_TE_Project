@@ -1,24 +1,107 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 // import 'package:flutter_app3/styleguide/colors.dart';
 import 'package:flutter_app3/shared/opaque_image.dart';
-
+import 'package:flutter_app3/shared/radial_progress.dart';
+import 'package:flutter_app3/styleguide/text_style.dart';
+import 'package:flutter_app3/models/user.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_app3/shared/my_info.dart';
 import 'package:flutter_app3/shared/profile_info_big_cart.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_app3/screens/chatbot/gpt.dart';
 import 'package:flutter_app3/shared/profile_info_card.dart';
 import 'package:flutter_app3/models/brew.dart';
 import 'package:flutter_app3/styleguide/colors.dart';
 import 'package:flutter_app3/services/auth.dart';
 import 'package:flutter_app3/services/database.dart';
 import 'package:flutter_app3/screens/home/settings_form.dart';
+import 'package:flutter_app3/screens/chatbot/convai.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_app3/video_call/HomePage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_app3/screens/home/doc_try.dart';
+import 'package:flutter_app3/models/user.dart';
+import 'package:flutter_app3/services/database.dart';
+import 'package:flutter_app3/shared/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_app3/shared/loading.dart';
+// import 'package:path/path.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
+  @override
+  _UserScreenState createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
   final AuthService _auth = AuthService();
 
+  PickedFile _imageFile;
+
+  final ImagePicker _picker = ImagePicker();
+
   @override
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Choose",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextButton.icon(
+                icon: Icon(Icons.camera),
+                onPressed: () {
+                  takePhoto(ImageSource.camera);
+                },
+                label: Text("Camera"),
+              ),
+              TextButton.icon(
+                icon: Icon(Icons.image),
+                onPressed: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                label: Text("Gallery"),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile;
+      // print('objectfcgv hbndcfvgbh1234567');
+      // var document =
+      //     Firestore.instance.collection('brews').document(globals.uid);
+      // var amit = document.get();
+
+      // print('op');
+
+      // print('amit123456789');
+    });
+  }
+
   Widget build(BuildContext context) {
     void _showSettingsPanel() {
       showModalBottomSheet(
@@ -38,17 +121,16 @@ class UserScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('My Profile'),
-          backgroundColor: Colors.brown[400],
+          backgroundColor: primaryColorOpacity,
           elevation: 0.0,
           actions: <Widget>[
-         
-             ElevatedButton.icon(
+            ElevatedButton.icon(
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(brown), //Background Color
+                backgroundColor: MaterialStateProperty.all(
+                    primaryColorOpacity), //Background Color
                 elevation: MaterialStateProperty.all(0), //Defines Elevation
-                shadowColor:
-                    MaterialStateProperty.all(brown), //Defines shadowColor
+                shadowColor: MaterialStateProperty.all(
+                    primaryColorOpacity), //Defines shadowColor
               ),
               icon: Icon(Icons.person),
               label: Text('logout'),
@@ -67,7 +149,7 @@ class UserScreen extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       OpaqueImage(
-                        imageUrl: "assets/images/anne.jpeg",
+                        imageUrl: "assets/images/background.jpg",
                       ),
                       SafeArea(
                         child: Padding(
@@ -82,7 +164,57 @@ class UserScreen extends StatelessWidget {
                               //     // style: headingTextStyle,
                               //   ),
                               // ),
-                              MyInfo(),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RadialProgress(
+                                    width: 4,
+                                    goalCompleted: 0.9,
+                                    child: CircleAvatar(
+                                      backgroundImage: _imageFile == null
+                                          ? AssetImage(
+                                              "assets/images/user.jpg")
+                                          : FileImage(File((_imageFile.path))),
+                                      radius: 80.0,
+                                      // size: Size.fromWidth(120.0),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        "User",
+                                        // "SettingsForm()",
+                                        style: whiteNameTextStyle,
+                                      ),
+                                      // Text(
+                                      //   ",24",
+                                      //   style: whiteNameTextStyle,
+                                      // ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      // Image.asset(
+                                      //   "assets/icons/location_pin.png",
+                                      //   width: 20.0,
+                                      //   color: Colors.white,
+                                      // ),
+                                      Text(
+                                        "",
+                                        style: whiteSubHeadingTextStyle,
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -99,7 +231,7 @@ class UserScreen extends StatelessWidget {
                       children: [
                         TableRow(
                           children: [
-                              GestureDetector(
+                            GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -108,8 +240,8 @@ class UserScreen extends StatelessWidget {
                                 );
                               },
                             child: ProfileInfoBigCard(
-                              firstText: "13",
-                              secondText: "Video call",
+                              firstText: "Video call",
+                              secondText: "",
                               icon: Icon(
                                 Icons.star,
                                 size: 32,
@@ -117,27 +249,47 @@ class UserScreen extends StatelessWidget {
                               ),
                             ),
                             ),
-                            ProfileInfoBigCard(
-                              firstText: "21",
-                              secondText: "second page",
-                              icon: Image.asset(
-                                "assets/icons/sad_smiley.png",
-                                width: 32.0,
+                           GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => MyAppState(),
+                                  ),
+                                );
+                              },
+                            child: ProfileInfoBigCard(
+                              firstText: "Let's Chat",
+                              secondText: "",
+                              icon: Icon(
+                                Icons.star,
+                                size: 32,
                                 color: Colors.blue,
                               ),
+                            ),
                             ),
                           ],
                         ),
                         TableRow(
                           children: [
-                            GestureDetector(
-                              onTap: () => _showSettingsPanel(),
+                              GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => Convai(),
+                                  ),
+                                );
+                              },
                               child: ProfileInfoBigCard(
-                                firstText: "21",
-                                secondText: "6 page",
-                                icon: Image.asset(
-                                  "assets/icons/sad_smiley.png",
-                                  width: 32.0,
+                                firstText: "Convai",
+                                secondText: "",
+                                // icon: Image.asset(
+                                //   "assets/icons/sad_smiley.png",
+                                //   width: 32.0,
+                                //   color: Colors.blue,
+                                // ),
+                                icon: Icon(
+                                  Icons.star,
+                                  size: 32,
                                   color: Colors.blue,
                                 ),
                               ),
@@ -151,11 +303,16 @@ class UserScreen extends StatelessWidget {
                                 );
                               },
                               child: ProfileInfoBigCard(
-                                firstText: "21",
-                                secondText: "6 page",
-                                icon: Image.asset(
-                                  "assets/icons/sad_smiley.png",
-                                  width: 32.0,
+                                firstText: "Doctor",
+                                secondText: "",
+                                // icon: Image.asset(
+                                //   "assets/icons/sad_smiley.png",
+                                //   width: 32.0,
+                                //   color: Colors.blue,
+                                // ),
+                                icon: Icon(
+                                  Icons.star,
+                                  size: 32,
                                   color: Colors.blue,
                                 ),
                               ),
@@ -206,19 +363,29 @@ class UserScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => _showSettingsPanel(),
                       child: ProfileInfoCard(
-                          firstText: "53%", secondText: "      Setting      "),
+                          firstText: "      Setting      ", secondText: ""),
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    ProfileInfoCard(
-                      hasImage: true,
-                      imagePath: "assets/icons/pulse.png",
-                    ),
+                    // ProfileInfoCard(
+                    //   hasImage: true,
+                    //   imagePath: "assets/icons/pulse.png",
+                    // ),
                     SizedBox(
                       width: 10,
                     ),
-                    ProfileInfoCard(firstText: "152", secondText: "Level"),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: ((builder) => bottomSheet()),
+                        );
+                        print(_imageFile.path);
+                      },
+                      child: ProfileInfoCard(
+                          firstText: "      Camera      ", secondText: ""),
+                    ),
                     SizedBox(
                       width: 10,
                     ),

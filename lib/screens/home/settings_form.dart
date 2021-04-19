@@ -4,6 +4,8 @@ import 'package:flutter_app3/services/database.dart';
 import 'package:flutter_app3/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app3/shared/loading.dart';
+import 'package:flutter_app3/globals.dart' as globals;
+
 
 class SettingsForm extends StatefulWidget {
   @override
@@ -18,6 +20,7 @@ class _SettingsFormState extends State<SettingsForm> {
   String _currentSugars;
   int _currentStrength;
   String _currentaccept;
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -49,11 +52,14 @@ class _SettingsFormState extends State<SettingsForm> {
 
                   SizedBox(height: 10.0),
                   TextFormField(
-                    initialValue: userData.sugars,
+                    initialValue: userData.name,
                     decoration: textInputDecoration,
                     validator: (val) =>
                         val.isEmpty ? 'Please enter a name' : null,
-                    onChanged: (val) => setState(() => _currentSugars = val),
+                    onChanged: (val) => setState(() {
+                      _currentName = val;
+                      globals.name = _currentName;
+                    }),
                   ),
                   SizedBox(height: 10.0),
                   // TextFormField(
@@ -89,7 +95,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   //   divisions: 8,
                   //   onChanged: (val) => setState(() => _currentStrength = val.round()),
                   // ),
-                  
+
                   ElevatedButton(
                       // color: Colors.pink[400],
                       child: Text(

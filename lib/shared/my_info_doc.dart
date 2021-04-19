@@ -6,8 +6,6 @@ import 'package:flutter_app3/styleguide/text_style.dart';
 import 'package:flutter_app3/shared/radial_progress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_app3/screens/home/settings_form_doctor.dart';
-import 'package:flutter_app3/globals.dart' as globals;
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyInfo extends StatefulWidget {
   @override
@@ -62,28 +60,12 @@ class _MyInfoState extends State<MyInfo> {
     );
   }
 
-  // void demo() async {
-  //   String myDocId = globals.uid;
-  //   var documentSnapshot;
-  //   await Firestore.instance.collection('brews').document(myDocId);
-  //   documentSnapshot.get();
-  //   print(documentSnapshot + 'amit1234567');
-  // }
-
   void takePhoto(ImageSource source) async {
     final pickedFile = await _picker.getImage(
       source: source,
     );
     setState(() {
       _imageFile = pickedFile;
-      // print('objectfcgv hbndcfvgbh1234567');
-      // var document =
-      //     Firestore.instance.collection('brews').document(globals.uid);
-      // var amit = document.get();
-      
-      // print('op');
-
-      // print('amit123456789');
     });
   }
 
@@ -128,8 +110,7 @@ class _MyInfoState extends State<MyInfo> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "",
-                // "SettingsForm()",
+                "SettingsForm()",
                 style: whiteNameTextStyle,
               ),
               // Text(
@@ -144,13 +125,13 @@ class _MyInfoState extends State<MyInfo> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Image.asset(
-              //   "assets/icons/location_pin.png",
-              //   width: 20.0,
-              //   color: Colors.white,
-              // ),
+              Image.asset(
+                "assets/icons/location_pin.png",
+                width: 20.0,
+                color: Colors.white,
+              ),
               Text(
-                "",
+                "35 km",
                 style: whiteSubHeadingTextStyle,
               )
             ],

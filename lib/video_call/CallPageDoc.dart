@@ -4,17 +4,17 @@ import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 
-class CallPage extends StatefulWidget {
+class CallPageDoc extends StatefulWidget {
   final String channelName;
 
-  const CallPage({Key key, this.channelName}) : super(key: key);
+  const CallPageDoc({Key key, this.channelName}) : super(key: key);
   
 
   @override
-  _CallPageState createState() => _CallPageState();
+  _CallPageStateDoc createState() => _CallPageStateDoc();
 }
 
-class _CallPageState extends State<CallPage> {
+class _CallPageStateDoc extends State<CallPageDoc> {
   static final _users = <int>[];
   final _infoStrings = <String>[];
   bool muted = false;
@@ -124,7 +124,7 @@ class _CallPageState extends State<CallPage> {
             padding: const EdgeInsets.all(12.0),
           ),
           RawMaterialButton(
-            onPressed: () => _onCallEnd(context),
+            onPressed: () =>  Navigator.pop(context),
             child: Icon(
               Icons.call_end,
               color: Colors.white,

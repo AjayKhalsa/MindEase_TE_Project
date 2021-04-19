@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
-import 'CallPage.dart';
+import 'CallPageDoc.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePageDoc extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageStateDoc createState() => _MyHomePageStateDoc();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageStateDoc extends State<MyHomePageDoc> {
   final myController = TextEditingController();
   bool _validateError = false;
 
@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Welcome to MentalEase'),
+        title: Text('Welcome to Mentalease'),
         elevation: 0,
       ),
       body: SafeArea(
@@ -31,12 +31,12 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // Container(
-                //   child: Image.asset('assets/agora-logo.png'),
+                //   // child: Image.asset('assets/agora-logo.png'),
                 //   height: MediaQuery.of(context).size.height * 0.1,
                 // ),
                 Padding(padding: EdgeInsets.only(top: 20)),
                 Text(
-                  'Welcome to MentalEase',
+                  'Welcome to Mentalease',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CallPage(channelName: myController.text),
+          builder: (context) => CallPageDoc(channelName: myController.text),
         ));
   }
 

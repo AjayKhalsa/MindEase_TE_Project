@@ -21,18 +21,16 @@ class BrewTile extends StatelessWidget {
                 backgroundColor: Colors.brown[brew.strength],
               ),
               title: Text(brew.name),
-              subtitle: Text('Takes ${brew.sugars} sugar(s)'),
+              subtitle: Text('No. of patient ${brew.sugars}'),
             ),
             ButtonBar(
               children: <Widget>[
-             
                 ElevatedButton(
                   child: const Text('Request For Appointment'),
                   onPressed: () {/* ... */},
                 ),
-
                 ElevatedButton(
-                  child: const Text('Cancle Appointment'),
+                  child: const Text('Cancel Appointment'),
                   onPressed: () {/* ... */},
                 ),
               ],
