@@ -7,10 +7,10 @@ Uses GPT3 to power all the recommendations. In order to clone and use the repo, 
 
 Uses Shane Lynn's asynch flask code as a starter. 
 
-To use - please clone the repository and then set up your virtual environment using the requirements.txt file with pip and virtualenv. You can achieve this with:
+
+If you just need to use the web version of the chatbot please clone the repository got to backend directory and then set up your virtual environment using the requirements.txt file with pip and virtualenv. You can achieve this with:
 
 
-    git clone https://github.com/AjayKhalsa/OpenAI-Therapy-Chatbot
     cd async_flask
     virtualenv AI-Therapist
     ./AI-Therapist/Scripts/activate
