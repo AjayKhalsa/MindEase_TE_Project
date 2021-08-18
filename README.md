@@ -1,16 +1,28 @@
-# flutter_app3
+[This is the updated version of the project using OpenAI's GPT3. The previous version used Huggingface’s pre-trained ConvAI model
+The source files for the previous version can be obtained from  [here](https://github.com/AjayKhalsa/convai_smile).]
 
-A new Flutter application.
+This is a proof of concept of an AI Therapist using GPT3. While an not a human, the AI responds like a real therapist, and gives useful recommendations based on what you are dealing with. This should lower 'social bar' for people going to therapy. No longer will people have to schedule appointments, pay ridiculous fees, or waste time trying to find a perfect match. Just talk with an AI who won't judge you but responds just like a therapist. 
 
-## Getting Started
+Uses GPT3 to power all the recommendations. In order to clone and use the repo, you'll need to get access to the GPT3 API and plug in your own secret key. 
 
-This project is a starting point for a Flutter application.
+Uses Shane Lynn's asynch flask code as a starter. 
 
-A few resources to get you started if this is your first Flutter project:
+To use - please clone the repository and then set up your virtual environment using the requirements.txt file with pip and virtualenv. You can achieve this with:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    git clone https://github.com/AjayKhalsa/OpenAI-Therapy-Chatbot
+    cd async_flask
+    virtualenv AI-Therapist
+    ./AI-Therapist/Scripts/activate
+    pip install -r requirements.txt  #(or in Windows - sometimes python -m pip install -r requirements.txt )
+
+
+
+Start the application with:
+
+<code>
+python application.py
+</code>
+
+And visit http://localhost:5000 to see the updating numbers.
+
